@@ -1,0 +1,66 @@
+{
+  "name": "bob",
+  "version": "1.0.0",
+  "description": "Description of your library",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/your-repo.git"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "library"
+  ],
+  "author": "Dev Dalia",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@ava/babel": "^2.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-object-assign": "^7.10.1",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.10.1",
+    "@types/quill": "^2.0.14",
+    "@types/react": "^16.8.0",
+    "ava": "^5.3.1",
+    "babel-loader": "^8.0.0",
+    "concurrently": "^6.3.0",
+    "css-loader": "^1.0.1",
+    "emoji-data-css": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "fuse.js": "^3.3.0",
+    "html-loader": "^0.5.5",
+    "image-webpack-loader": "^4.6.0",
+    "mini-css-extract-plugin": "^0.4.5",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "parchment": "^1.1.4",
+    "quill": "^2.0.0-dev.3",
+    "resolve-url-loader": "^3.0.0",
+    "sass": "^1.70.0",
+    "sass-loader": "^7.1.0",
+    "serve": "^14.2.1",
+    "style-loader": "^2.0.0",
+    "ts-loader": "~8.2.0",
+    "typescript": "^5.3.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.47.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^4.0.0"
+  },
+  "ava": {
+    "require": [
+      "@babel/register"
+    ]
+  }
+}
