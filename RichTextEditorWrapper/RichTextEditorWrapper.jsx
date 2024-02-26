@@ -134,7 +134,7 @@ const RichTextEditorWrapper = (props) => {
       quill?.setText("");
     }
     if (quill && value && quill?.root.innerHTML !== value) {
-      quill?.clipboard.dangerouslyPasteHTML(`<div>${value}</div>`);
+      quill.setContents(quill.clipboard.convert({html: `${value}`}));
     }
   }, [value, quill]);
 
