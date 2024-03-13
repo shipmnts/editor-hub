@@ -4,6 +4,7 @@ import QuillBetterTable from "../quill-better-table-master/src/quill-better-tabl
 import * as Emoji from "../quill-emojijs-main/src/quill-emoji";
 // import "@devdcodes9/quill-emojijs/dist/quill-emoji.css;
 import mention from "../quill-mention/src/quill.mention";
+import ResizeModule from "@ssumo/quill-resize-module";
 import "./richtext.css";
 // interface RichTextEditorWrapperProp {
 //   disabled?: boolean;
@@ -54,6 +55,14 @@ const RichTextEditorWrapper = (props) => {
           },
         },
       },
+      resize: {
+        locale: {altTip: "Enter key OK",
+        inputTip: "Enter key to confirm",
+        floatLeft: "left",
+        floatRight: "right",
+        center: "center",
+        restore: "restore",}
+      },
       mention: allowMention && {
         allowedChars: /^[A-Za-z\sÅÄÖåäö]*$/,
         mentionDenotationChars: mentionChars,
@@ -89,6 +98,7 @@ const RichTextEditorWrapper = (props) => {
   if (Quill && !quill) {
     try {
       Quill.register("modules/better-table", QuillBetterTable);
+      Quill.register("modules/resize", ResizeModule);
       Quill.register("modules/emoji", Emoji.default, true);
       Quill.register("formats/emoji", Emoji.default.EmojiBlot, true);
       Quill.register("modules/emoji-toolbar", Emoji.default.ToolbarEmoji, true);
