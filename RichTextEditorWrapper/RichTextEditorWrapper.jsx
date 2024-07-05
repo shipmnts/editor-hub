@@ -41,6 +41,7 @@ const RichTextEditorWrapper = (props) => {
     onSubmit,
     mentionChars = ["@"],
     showDenotationChar = true,
+    onPaste,
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
@@ -56,12 +57,14 @@ const RichTextEditorWrapper = (props) => {
         },
       },
       resize: {
-        locale: {altTip: "Enter key OK",
-        inputTip: "Enter key to confirm",
-        floatLeft: "left",
-        floatRight: "right",
-        center: "center",
-        restore: "restore",}
+        locale: {
+          altTip: "Enter key OK",
+          inputTip: "Enter key to confirm",
+          floatLeft: "left",
+          floatRight: "right",
+          center: "center",
+          restore: "restore",
+        },
       },
       mention: allowMention && {
         allowedChars: /^[A-Za-z\sÅÄÖåäö]*$/,
@@ -144,7 +147,7 @@ const RichTextEditorWrapper = (props) => {
       quill?.setText("");
     }
     if (quill && value && quill?.root.innerHTML !== value) {
-      quill.setContents(quill.clipboard.convert({html: `${value}`}));
+      quill.setContents(quill.clipboard.convert({ html: `${value}` }));
     }
   }, [value, quill]);
 
@@ -177,6 +180,7 @@ const RichTextEditorWrapper = (props) => {
         onKeyDown={(e) => {
           keyboardBindingHandler(e);
         }}
+        onPaste={onPaste}
       />
     </div>
   );
