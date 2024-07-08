@@ -33,6 +33,7 @@ const RichTextEditorWrapper = (props) => {
     onChange,
     height = "auto",
     disableToolbar,
+    disableImagePaste = false,
     toolbarOptions,
     allowMention,
     onMentionSelect,
@@ -41,7 +42,6 @@ const RichTextEditorWrapper = (props) => {
     onSubmit,
     mentionChars = ["@"],
     showDenotationChar = true,
-    onPaste,
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
@@ -135,19 +135,30 @@ const RichTextEditorWrapper = (props) => {
   // const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (quill) {
+      if (disableImagePaste) {
+        quill.clipboard.addMatcher(["IMG", "PICTURE", "PNG"], (node, delta) => {
+          const Delta = Quill.import("delta");
+          return new Delta().insert("");
+        });
+      }
       quill.on("text-change", (delta, oldDelta, source) => {
-        if (onChange) onChange(quill.root.innerHTML);
+        const sanitizedData = quill.root.innerHTML.replace(/<img[^>]*>/gi, "");
+        const data = disableImagePaste ? sanitizedData : quill.root.innerHTML;
+        if (onChange) onChange(data);
       });
       quill.enable(!disabled);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quill, quillRef]);
+
   useEffect(() => {
     if (!value) {
       quill?.setText("");
     }
     if (quill && value && quill?.root.innerHTML !== value) {
-      quill.setContents(quill.clipboard.convert({ html: `${value}` }));
+      const sanitizedData = value.replace(/<img[^>]*>/gi, "");
+      const data = disableImagePaste ? sanitizedData : value;
+      quill.setContents(quill.clipboard.convert({ html: `${data}` }));
     }
   }, [value, quill]);
 
@@ -180,7 +191,6 @@ const RichTextEditorWrapper = (props) => {
         onKeyDown={(e) => {
           keyboardBindingHandler(e);
         }}
-        onPaste={onPaste}
       />
     </div>
   );
