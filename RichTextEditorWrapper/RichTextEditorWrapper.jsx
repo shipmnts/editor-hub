@@ -6,6 +6,25 @@ import * as Emoji from "../quill-emojijs-main/src/quill-emoji";
 import mention from "../quill-mention/src/quill.mention";
 import ResizeModule from "@ssumo/quill-resize-module";
 import "./richtext.css";
+// interface RichTextEditorWrapperProp {
+//   disabled?: boolean;
+//   value?: string;
+//   onChange?: (content: string) => void;
+//   height?: string;
+//   disableToolbar?: boolean;
+//   toolbarOptions?: any;
+//   allowMention?: boolean;
+//   onMentionSelect?: (item: any, insertItem: any) => void;
+//   renderMentionItem?: (item: any, searchTerm: any) => void;
+//   onSearchMention?: (
+//     searchTerm: any,
+//     renderList: any,
+//     mentionChar: any
+//   ) => void;
+//   onSubmit?: (content: any) => void;
+//   mentionChars?: string[];
+//   showDenotationChar?: boolean;
+// }
 
 const RichTextEditorWrapper = (props) => {
   const {
