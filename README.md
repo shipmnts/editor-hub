@@ -12,6 +12,12 @@ Editor Hub is a powerful and customizable rich text editor component for React a
 - Resizable images
 - Fully typed with TypeScript
 
+## Overview
+
+Editor Hub was created as a wrapper over Quill v2.0 and react-quill, with built-in support for emojis and other advanced features. This integration eliminates common errors users face when including these features separately, allowing developers to use advanced functionality directly without worrying about compatibility issues.
+
+We envision Editor Hub as a highly capable and user-friendly rich text editor with the potential for diverse applications, including the creation of email templates. Our goal is to provide a seamless editing experience while offering powerful features out of the box.
+
 ## Installation and Setup for Development
 
 To use Editor Hub in your project during development, follow these steps:
@@ -157,6 +163,17 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+## Future Development
+
+As we continue to develop Editor Hub, we aim to enhance its capabilities and expand its use cases. Some areas of focus include:
+
+- Enhanced customization options
+- Additional plugins and integrations
+- Improved email template creation and editing
+- Performance optimizations
+
+We welcome contributions and feedback from the community to help shape the future of Editor Hub.
 
 ## License
 
