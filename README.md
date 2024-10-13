@@ -10,7 +10,6 @@ Editor Hub is a powerful and customizable rich text editor component for React a
 - Enhanced table editing
 - Customizable toolbar
 - Resizable images
-- Fully typed with TypeScript
 
 ## Installation and Setup for Development
 
