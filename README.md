@@ -58,7 +58,15 @@ To use Editor Hub in your project during development, follow these steps:
    import RichTextEditorWrapper from "editor-hub";
    ```
 
-Remember to rebuild Editor Hub (`yarn build` in the editor-hub directory) when you make changes to it.
+### Watch for File Changes
+
+To automatically rebuild the project on file changes, use the `watch` command:
+
+```bash
+yarn watch
+```
+
+This will watch for changes in the source files and automatically rebuild the project, which improves the development workflow by eliminating the need for manual rebuilds.
 
 ## Usage
 
@@ -151,7 +159,7 @@ When you're finished developing or testing with the linked package, you can unli
    yarn unlink
    ```
 
-This will remove the symlinks created by yarn link.
+This will remove the symlinks created by `yarn link`.
 
 ## Contributing
 
@@ -188,3 +196,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 If you have any questions or need help with Editor Hub, please open an issue in the GitHub repository.
+
+--- 

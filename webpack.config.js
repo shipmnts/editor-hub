@@ -12,6 +12,11 @@ module.exports = {
     library: "bob", // Name of your library
     umdNamedDefine: true,
   },
+  watchOptions: {
+    aggregateTimeout: 300, // Delay before rebuilding (in ms)
+    poll: 1000,            // Use polling for file changes (in ms)
+    ignored: /node_modules/ // Ignore node_modules to improve performance
+  },
   module: {
     rules: [
       {
