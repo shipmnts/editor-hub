@@ -42,6 +42,7 @@ const RichTextEditorWrapper = (props) => {
     onSubmit,
     mentionChars = ["@"],
     showDenotationChar = true,
+    theme="snow"
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
@@ -97,7 +98,7 @@ const RichTextEditorWrapper = (props) => {
       "emoji-textarea": false,
       "emoji-shortname": true,
     },
-    theme: props?.theme,
+    theme,
   });
   if (Quill && !quill) {
     try {
