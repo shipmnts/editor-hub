@@ -107,6 +107,7 @@ The `RichTextEditorWrapper` component accepts the following props:
 - `onSubmit`: Callback function when the editor content is submitted
 - `mentionChars`: Array of characters that trigger mentions (default: ["@"])
 - `showDenotationChar`: Boolean to show the denotation character in mentions
+- `theme`: String (`snow` or `bubble`) which determines the theme of the editor
 
 ## Customization
 
