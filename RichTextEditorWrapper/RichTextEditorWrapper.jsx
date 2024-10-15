@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { useQuill } from "../src/modules/react-quilljs-main";
-import QuillBetterTable from "../src/modules/quill-better-table-master/src/quill-better-table";
-import * as Emoji from "../src/modules/quill-emojijs-main/src/quill-emoji";
+import { useQuill } from "../src/modules/main";
+import QuillBetterTable from "../src/modules/table/src/quill-better-table";
+import * as Emoji from "../src/modules/emojis/src/quill-emoji";
 // import "@devdcodes9/quill-emojijs/dist/quill-emoji.css;
 import mention from "../src/modules/quill-mention/src/quill.mention";
 import ResizeModule from "@ssumo/quill-resize-module";
