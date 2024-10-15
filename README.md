@@ -39,7 +39,7 @@ To use Editor Hub in your project during development, follow these steps:
    ```bash
    yarn build
    ```
-
+   Facing some error regarding ssl legacy/digital envelope routine: try `export NODE_OPTIONS=--openssl-legacy-provider` and then rebuild.
 4. Link the package locally:
 
    ```bash
