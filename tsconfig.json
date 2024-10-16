@@ -15,13 +15,13 @@
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
     "skipDefaultLibCheck": true,
-    "outDir": "lib",
+    "outDir": "src/core/lib",
     "lib": ["es2018", "dom"],
     "importHelpers": true
   },
   "exclude": [
     "node_modules",
-    "lib",
+    "src/core/lib",
     "esm",
     "tests",
     "**/__tests__/**/*",

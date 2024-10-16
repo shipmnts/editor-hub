@@ -2,8 +2,8 @@
   "name": "editor-hub",
   "version": "1.0.4",
   "description": "Description of your library",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "./src/core/dist/index.js",
+  "module": "./src/core/dist/index.esm.js",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
