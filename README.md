@@ -50,7 +50,7 @@ To use Editor Hub in your project during development, follow these steps:
 
    ```bash
    cd /path/to/your/project
-   yarn link editor-hub
+   yarn link "editor-hub"
    ```
 
 6. You can now import and use Editor Hub in your project:
