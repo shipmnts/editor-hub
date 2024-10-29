@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { useQuill } from "../react-quilljs-main";
-import QuillBetterTable from "../quill-better-table-master/src/quill-better-table";
-import * as Emoji from "../quill-emojijs-main/src/quill-emoji";
+import { useQuill } from "../modules/main";
+import QuillBetterTable from "../modules/table/src/quill-better-table";
+import * as Emoji from "../modules/emojis/src/quill-emoji";
 // import "@devdcodes9/quill-emojijs/dist/quill-emoji.css;
-import mention from "../quill-mention/src/quill.mention";
+import mention from "../modules/quill-mention/src/quill.mention";
 import ResizeModule from "@ssumo/quill-resize-module";
 import "./richtext.css";
 // interface RichTextEditorWrapperProp {
