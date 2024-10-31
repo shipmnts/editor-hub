@@ -1,3 +1,7 @@
+:root {
+  --border-radius: 8px
+}
+
 .ql-mention-list-container {
     max-width: 15rem,;
     border: 1px solid #F0F0F0;
@@ -48,7 +52,9 @@
     font-size: 13px;
     height: 100%;
     margin: 0;
-    position: relative
+    position: relative;
+    border-radius: 0px 0px var(--border-radius) var(--border-radius);
+    background-color: #ffffff;
   }
   
   .ql-container.ql-disabled .ql-tooltip {
@@ -577,13 +583,14 @@
     float: left;
     height: 24px;
     padding: 3px 5px;
-    width: 28px
+    width: 28px;
+    margin: 3px
   }
   
   .ql-snow .ql-toolbar button svg,
   .ql-snow.ql-toolbar button svg {
     float: left;
-    height: 100%
+    height: 22px
   }
   
   .ql-snow .ql-toolbar button:active:hover,
@@ -1111,15 +1118,18 @@
     top: 5px
   }
   
-  .ql-toolbar.ql-snow {
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    padding: 8px
-  }
+ .ql-toolbar.ql-snow {
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 6px 10px;
+  background-color: #ffffff;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
   
   .ql-toolbar.ql-snow .ql-formats {
-    margin-right: 15px
+    margin-right: 25px
   }
   
   .ql-toolbar.ql-snow .ql-picker-label {
