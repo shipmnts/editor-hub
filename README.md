@@ -39,7 +39,9 @@ To use Editor Hub in your project during development, follow these steps:
    ```bash
    yarn build
    ```
+
    Facing some error regarding ssl legacy/digital envelope routine: try `export NODE_OPTIONS=--openssl-legacy-provider` and then rebuild.
+
 4. Link the package locally:
 
    ```bash
@@ -94,6 +96,7 @@ export default MyEditor;
 
 The `RichTextEditorWrapper` component accepts the following props:
 
+- `theme` (string): The theme to use for the Quill editor. Default is `"snow"`. Other options include `"bubble"`. (Bubble is a simple tooltip based theme.)
 - `disabled`: Boolean to disable the editor
 - `value`: Initial value of the editor
 - `onChange`: Callback function when content changes
@@ -197,4 +200,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need help with Editor Hub, please open an issue in the GitHub repository.
 
---- 
+---

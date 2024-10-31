@@ -6,6 +6,7 @@ import * as Emoji from "../modules/emojis/src/quill-emoji";
 import mention from "../modules/quill-mention/src/quill.mention";
 import ResizeModule from "@ssumo/quill-resize-module";
 import "./richtext.css";
+import "./bubble.css";
 // interface RichTextEditorWrapperProp {
 //   disabled?: boolean;
 //   value?: string;
@@ -42,9 +43,11 @@ const RichTextEditorWrapper = (props) => {
     onSubmit,
     mentionChars = ["@"],
     showDenotationChar = true,
+    theme='bubble'
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
+    theme,
     modules: {
       table: false,
       "better-table": {
