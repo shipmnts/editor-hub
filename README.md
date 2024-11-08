@@ -2,6 +2,9 @@
 
 Editor Hub is a powerful and customizable rich text editor component for React applications. It combines the functionality of Quill.js with additional features like emoji support, mentions, and better table handling.
 
+![image](https://github.com/user-attachments/assets/affa5da3-39c6-4cd3-844e-798985077655)
+
+
 ## Features
 
 - Rich text editing with Quill.js
