@@ -43,7 +43,7 @@ const RichTextEditorWrapper = (props) => {
     onSubmit,
     mentionChars = ["@"],
     showDenotationChar = true,
-    theme='bubble'
+    theme='snow'
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
