@@ -43,7 +43,8 @@ const RichTextEditorWrapper = (props) => {
     onSubmit,
     mentionChars = ["@"],
     showDenotationChar = true,
-    theme='snow'
+    theme = "snow",
+    submitKey = "ctrlEnter",
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
@@ -165,21 +166,38 @@ const RichTextEditorWrapper = (props) => {
     }
   }, [value, quill]);
 
+  const isMentionDropdownOpen = () => {
+    return document.querySelector(".ql-mention-list-container") !== null;
+  };
+
   const keyboardBindingHandler = (e) => {
-    if (e.ctrlKey && e.key === "Enter") {
-      e.preventDefault();
-      handleCtrlEnter();
-    } else if (e.key === "Enter" && allowMention) {
+    if (e.key === "Enter" && isMentionDropdownOpen()) {
       // 13 is the key for enter in keyboard module bindings
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const bindings = quill?.keyboard?.bindings;
       const handler = bindings["13"][0].handler;
       handler();
+    } else if (
+      submitKey === "ctrlEnter" &&
+      (e.ctrlKey || e.metaKey) &&
+      e.key === "Enter"
+    ) {
+      e.preventDefault();
+      handleSubmit();
+    } else if (
+      submitKey === "Enter" &&
+      e.key === "Enter" &&
+      !e.ctrlKey &&
+      !e.altKey &&
+      !e.shiftKey
+    ) {
+      e.preventDefault();
+      handleSubmit();
     }
   };
 
-  const handleCtrlEnter = () => {
+  const handleSubmit = () => {
     const quillContent = quill?.getContents();
     if (quillContent && onSubmit) {
       onSubmit(quillContent);

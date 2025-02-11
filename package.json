@@ -1,6 +1,6 @@
 {
   "name": "editor-hub",
-  "version": "1.0.1-stag",
+  "version": "1.0.2-stag",
   "description": "Description of your library",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
