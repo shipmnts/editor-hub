@@ -1,3 +1,3 @@
-import { default as RichTextEditorWrapper } from "./RichTextEditorWrapper/RichTextEditorWrapper.jsx";
+import { default as RichTextEditorWrapper } from "./src/RichTextEditorWrapper.jsx";
 
 export default RichTextEditorWrapper;

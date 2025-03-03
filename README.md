@@ -2,6 +2,9 @@
 
 Editor Hub is a powerful and customizable rich text editor component for React applications. It combines the functionality of Quill.js with additional features like emoji support, mentions, and better table handling.
 
+![image](https://github.com/user-attachments/assets/affa5da3-39c6-4cd3-844e-798985077655)
+
+
 ## Features
 
 - Rich text editing with Quill.js
@@ -40,6 +43,8 @@ To use Editor Hub in your project during development, follow these steps:
    yarn build
    ```
 
+   Facing some error regarding ssl legacy/digital envelope routine: try `export NODE_OPTIONS=--openssl-legacy-provider` and then rebuild.
+
 4. Link the package locally:
 
    ```bash
@@ -50,7 +55,7 @@ To use Editor Hub in your project during development, follow these steps:
 
    ```bash
    cd /path/to/your/project
-   yarn link editor-hub
+   yarn link "editor-hub"
    ```
 
 6. You can now import and use Editor Hub in your project:
@@ -58,7 +63,15 @@ To use Editor Hub in your project during development, follow these steps:
    import RichTextEditorWrapper from "editor-hub";
    ```
 
-Remember to rebuild Editor Hub (`yarn build` in the editor-hub directory) when you make changes to it.
+### Watch for File Changes
+
+To automatically rebuild the project on file changes, use the `watch` command:
+
+```bash
+yarn watch
+```
+
+This will watch for changes in the source files and automatically rebuild the project, which improves the development workflow by eliminating the need for manual rebuilds.
 
 ## Usage
 
@@ -86,6 +99,7 @@ export default MyEditor;
 
 The `RichTextEditorWrapper` component accepts the following props:
 
+- `theme` (string): The theme to use for the Quill editor. Default is `"snow"`. Other options include `"bubble"`. (Bubble is a simple tooltip based theme.)
 - `disabled`: Boolean to disable the editor
 - `value`: Initial value of the editor
 - `onChange`: Callback function when content changes
@@ -151,7 +165,7 @@ When you're finished developing or testing with the linked package, you can unli
    yarn unlink
    ```
 
-This will remove the symlinks created by yarn link.
+This will remove the symlinks created by `yarn link`.
 
 ## Contributing
 
@@ -188,3 +202,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 If you have any questions or need help with Editor Hub, please open an issue in the GitHub repository.
+
+---

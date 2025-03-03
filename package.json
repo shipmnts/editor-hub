@@ -1,12 +1,13 @@
 {
   "name": "editor-hub",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Description of your library",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --open --mode development"
+    "start": "webpack-dev-server --open --mode development",
+    "watch": "webpack --watch --mode development"
   },
   "repository": {
     "type": "git",
