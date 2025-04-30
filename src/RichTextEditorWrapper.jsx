@@ -45,6 +45,7 @@ const RichTextEditorWrapper = (props) => {
     showDenotationChar = true,
     theme = "snow",
     submitKey = "ctrlEnter",
+    isExternalMentionOpen = false,
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
@@ -190,7 +191,8 @@ const RichTextEditorWrapper = (props) => {
       e.key === "Enter" &&
       !e.ctrlKey &&
       !e.altKey &&
-      !e.shiftKey
+      !e.shiftKey &&
+      !isExternalMentionOpen
     ) {
       e.preventDefault();
       handleSubmit();
