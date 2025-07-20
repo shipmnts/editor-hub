@@ -48,10 +48,12 @@ const RichTextEditorWrapper = forwardRef((props, ref) => {
     theme = "snow",
     submitKey = "ctrlEnter",
     isExternalMentionOpen = false,
+    placeholder = "",
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
     theme,
+    placeholder,
     modules: {
       table: false,
       "better-table": {
