@@ -7,6 +7,8 @@ import mention from "../modules/quill-mention/src/quill.mention";
 import ResizeModule from "@ssumo/quill-resize-module";
 import "./richtext.css";
 import "./bubble.css";
+import { forwardRef } from "react";
+import { useImperativeHandle } from "react";
 // interface RichTextEditorWrapperProp {
 //   disabled?: boolean;
 //   value?: string;
@@ -27,7 +29,7 @@ import "./bubble.css";
 //   showDenotationChar?: boolean;
 // }
 
-const RichTextEditorWrapper = (props) => {
+const RichTextEditorWrapper = forwardRef((props, ref) => {
   const {
     disabled,
     value,
@@ -45,10 +47,13 @@ const RichTextEditorWrapper = (props) => {
     showDenotationChar = true,
     theme = "snow",
     submitKey = "ctrlEnter",
+    isExternalMentionOpen = false,
+    placeholder = "",
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
     theme,
+    placeholder,
     modules: {
       table: false,
       "better-table": {
@@ -102,6 +107,15 @@ const RichTextEditorWrapper = (props) => {
       "emoji-shortname": true,
     },
   });
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      if (quillRef.current) {
+        quillRef.current.querySelector(".ql-editor")?.focus();
+      }
+    },
+  }));
+
   if (Quill && !quill) {
     try {
       Quill.register("modules/better-table", QuillBetterTable);
@@ -190,7 +204,8 @@ const RichTextEditorWrapper = (props) => {
       e.key === "Enter" &&
       !e.ctrlKey &&
       !e.altKey &&
-      !e.shiftKey
+      !e.shiftKey &&
+      !isExternalMentionOpen
     ) {
       e.preventDefault();
       handleSubmit();
@@ -215,6 +230,6 @@ const RichTextEditorWrapper = (props) => {
       />
     </div>
   );
-};
+});
 
 export default RichTextEditorWrapper;
