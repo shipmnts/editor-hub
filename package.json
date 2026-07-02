@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
-    "watch": "webpack --watch --mode development"
+    "watch": "webpack --watch --mode development",
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.10.1",
+    "@ssumo/quill-resize-module": "^1.0.1",
     "@types/quill": "^2.0.14",
     "@types/react": "^16.8.0",
     "ava": "^5.3.1",
@@ -42,11 +44,11 @@
     "fuse.js": "^3.3.0",
     "html-loader": "^0.5.5",
     "image-webpack-loader": "^4.6.0",
+    "jsdom": "^22.1.0",
     "mini-css-extract-plugin": "^0.4.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "parchment": "^1.1.4",
     "quill": "^2.0.0-dev.3",
-    "@ssumo/quill-resize-module": "^1.0.1",
     "resolve-url-loader": "^3.0.0",
     "sass": "^1.70.0",
     "sass-loader": "^7.1.0",
@@ -63,6 +65,7 @@
   "ava": {
     "require": [
       "@babel/register"
-    ]
+    ],
+    "files": ["modules/**/test.js"]
   }
 }
