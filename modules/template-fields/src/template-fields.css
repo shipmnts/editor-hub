@@ -1,0 +1,29 @@
+.template-field {
+  display: inline-block;
+}
+
+.template-field .template-field-input {
+  border: 1px dashed #8c8c8c;
+  border-radius: 3px;
+  background: #fffbe6;
+  padding: 2px 6px;
+  font: inherit;
+  min-width: 120px;
+}
+
+/* Author mode: fields are placed, not filled */
+.template-mode-author .template-field-input {
+  pointer-events: none;
+  background: #eef2ff;
+  border-style: dotted;
+}
+
+/* Fill mode: locked text, active fields */
+.template-mode-fill .ql-editor {
+  background: #fafafa;
+}
+.template-mode-fill .template-field-input {
+  background: #ffffff;
+  border-style: solid;
+  border-color: #4c6ef5;
+}

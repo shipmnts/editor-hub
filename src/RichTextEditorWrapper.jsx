@@ -7,6 +7,8 @@ import mention from "../modules/quill-mention/src/quill.mention";
 import ResizeModule from "@ssumo/quill-resize-module";
 import "./richtext.css";
 import "./bubble.css";
+import TemplateFieldBlot from "../modules/template-fields/src/blots/field";
+import "../modules/template-fields/src/template-fields.css";
 import { forwardRef } from "react";
 import { useImperativeHandle } from "react";
 // interface RichTextEditorWrapperProp {
@@ -140,6 +142,7 @@ const RichTextEditorWrapper = forwardRef((props, ref) => {
       const DirectionStyle = Quill.import("attributors/style/direction");
       Quill.register("modules/mention", mention.Mention);
       Quill.register("blots/mention", mention.MentionBlot);
+      Quill.register("blots/template-field", TemplateFieldBlot);
       Quill.register(BackgroundStyle, true);
       Quill.register(ColorStyle, true);
       Quill.register(FontStyle, true);
