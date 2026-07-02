@@ -199,6 +199,23 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [quill-mention](https://github.com/afry/quill-mention)
 - [quill-emoji](https://github.com/contentco/quill-emoji)
 
+## Template fields (v1)
+
+Editor Hub can act as a lightweight PandaDoc-style template editor. Pass `mode="author"` to place fields (via the `insertField` ref method) into the document, or `mode="fill"` to let end users type values into those fields without touching the surrounding document structure. Use `getTemplate()` to get the blank (value-cleared) template HTML for saving, `getValues()` to read back `{ values, missingRequired }` keyed by field id, and `getRenderedHTML()` to get the final HTML with fields replaced by their plain, escaped values. Unknown or legacy field types found in loaded HTML are rendered as inert, disabled chips instead of crashing or becoming editable.
+
+```jsx
+const editorRef = useRef(null);
+
+<RichTextEditorWrapper ref={editorRef} mode="author" value={value} />;
+
+editorRef.current.insertField({ type: "text", label: "Shipper Name", required: true });
+const template = editorRef.current.getTemplate();
+const { values, missingRequired } = editorRef.current.getValues();
+const rendered = editorRef.current.getRenderedHTML();
+```
+
+**Caveat:** typing into a field while in `mode="fill"` updates the field's own dataset but does **not** fire `onChange` (the underlying Quill Delta for the surrounding document is unchanged). If you drive the `value` prop from your own state, call `getValues()` and/or `getRenderedHTML()` to capture what the user typed *before* changing `value` — otherwise the re-render can discard the typed field values. Also note that the `disabled` prop now reacts to changes at runtime (it previously only took effect on mount).
+
 ## Support
 
 If you have any questions or need help with Editor Hub, please open an issue in the GitHub repository.

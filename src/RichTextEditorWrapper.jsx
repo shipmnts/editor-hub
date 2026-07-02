@@ -124,8 +124,9 @@ const RichTextEditorWrapper = forwardRef((props, ref) => {
     },
     insertField: ({ type = "text", label = "", required = false, fieldId } = {}) => {
       if (!quill) return null;
-      const id = fieldId || `f_${Math.random().toString(36).slice(2, 10)}`;
       const range = quill.getSelection(true);
+      if (!range) return null;
+      const id = fieldId || `f_${Math.random().toString(36).slice(2, 10)}`;
       quill.insertEmbed(
         range.index,
         "template-field",

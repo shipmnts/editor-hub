@@ -2,6 +2,7 @@ import test from "ava";
 import { JSDOM } from "jsdom";
 import {
   FIELD_CLASS,
+  FIELD_UNKNOWN_CLASS,
   buildFieldContent,
   collectFieldValues,
   renderFilledHTML,
@@ -89,4 +90,42 @@ test("blankTemplateHTML clears values but keeps field structure", (t) => {
   t.truthy(span);
   t.is(span.dataset.value, "");
   t.is(span.dataset.fieldId, "f1");
+});
+
+test("renderFilledHTML escapes special characters in field values", (t) => {
+  const doc = dom();
+  const root = doc.createElement("div");
+  root.appendChild(
+    fieldSpan(doc, {
+      fieldId: "f1",
+      fieldType: "text",
+      label: "Notes",
+      required: "false",
+      value: '<script>alert(1)</script> & "quotes"',
+    })
+  );
+  const html = renderFilledHTML(root.innerHTML, doc);
+  t.true(html.includes("&lt;script&gt;"));
+  t.false(html.includes("<script>"));
+});
+
+test("buildFieldContent renders unknown field types as inert and collectFieldValues still reports them", (t) => {
+  const doc = dom();
+  const node = fieldSpan(doc, {
+    fieldId: "f1",
+    fieldType: "signature",
+    label: "Signature",
+    required: "false",
+    value: "",
+  });
+  const input = node.querySelector("input");
+  t.truthy(input);
+  t.true(input.disabled);
+  t.true(node.classList.contains(FIELD_UNKNOWN_CLASS));
+  t.is(node.dataset.fieldType, "signature");
+
+  const root = doc.createElement("div");
+  root.appendChild(node);
+  const { values } = collectFieldValues(root);
+  t.deepEqual(values, { f1: "" });
 });

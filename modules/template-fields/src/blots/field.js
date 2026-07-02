@@ -1,5 +1,5 @@
 import Quill from "quill";
-import { buildFieldContent, FIELD_INPUT_CLASS } from "../helpers";
+import { buildFieldContent, FIELD_INPUT_CLASS, FIELD_CLASS } from "../helpers";
 
 const Embed = Quill.import("blots/embed");
 
@@ -41,6 +41,6 @@ class TemplateFieldBlot extends Embed {
 
 TemplateFieldBlot.blotName = "template-field";
 TemplateFieldBlot.tagName = "span";
-TemplateFieldBlot.className = "template-field";
+TemplateFieldBlot.className = FIELD_CLASS;
 
 export default TemplateFieldBlot;
