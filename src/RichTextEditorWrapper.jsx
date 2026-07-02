@@ -9,6 +9,11 @@ import "./richtext.css";
 import "./bubble.css";
 import TemplateFieldBlot from "../modules/template-fields/src/blots/field";
 import "../modules/template-fields/src/template-fields.css";
+import {
+  collectFieldValues,
+  renderFilledHTML,
+  blankTemplateHTML,
+} from "../modules/template-fields/src/helpers";
 import { forwardRef } from "react";
 import { useImperativeHandle } from "react";
 // interface RichTextEditorWrapperProp {
@@ -51,6 +56,7 @@ const RichTextEditorWrapper = forwardRef((props, ref) => {
     submitKey = "ctrlEnter",
     isExternalMentionOpen = false,
     placeholder = "",
+    mode, // undefined | "author" | "fill"
   } = props;
 
   const { quill, quillRef, Quill } = useQuill({
@@ -116,6 +122,29 @@ const RichTextEditorWrapper = forwardRef((props, ref) => {
         quillRef.current.querySelector(".ql-editor")?.focus();
       }
     },
+    insertField: ({ type = "text", label = "", required = false, fieldId } = {}) => {
+      if (!quill) return null;
+      const id = fieldId || `f_${Math.random().toString(36).slice(2, 10)}`;
+      const range = quill.getSelection(true);
+      quill.insertEmbed(
+        range.index,
+        "template-field",
+        {
+          fieldId: id,
+          fieldType: type,
+          label,
+          required: String(required),
+          value: "",
+        },
+        "user"
+      );
+      quill.setSelection(range.index + 1, 0);
+      return id;
+    },
+    getTemplate: () => (quill ? blankTemplateHTML(quill.root.innerHTML, document) : ""),
+    getValues: () =>
+      quill ? collectFieldValues(quill.root) : { values: {}, missingRequired: [] },
+    getRenderedHTML: () => (quill ? renderFilledHTML(quill.root.innerHTML, document) : ""),
   }));
 
   if (Quill && !quill) {
@@ -171,6 +200,17 @@ const RichTextEditorWrapper = forwardRef((props, ref) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quill, quillRef]);
+
+  useEffect(() => {
+    if (!quill) return;
+    quill.enable(!(disabled || mode === "fill"));
+    const container = quillRef.current;
+    if (container) {
+      container.classList.remove("template-mode-author", "template-mode-fill");
+      if (mode) container.classList.add(`template-mode-${mode}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [quill, mode, disabled]);
 
   useEffect(() => {
     if (!value) {
