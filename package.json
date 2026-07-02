@@ -8,6 +8,7 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
     "watch": "webpack --watch --mode development",
+    "demo": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --config webpack.demo.config.js --open --mode development",
     "test": "ava"
   },
   "repository": {
@@ -43,12 +44,15 @@
     "file-loader": "^2.0.0",
     "fuse.js": "^3.3.0",
     "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^4.5.2",
     "image-webpack-loader": "^4.6.0",
     "jsdom": "^22.1.0",
     "mini-css-extract-plugin": "^0.4.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "parchment": "^1.1.4",
     "quill": "^2.0.0-dev.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "resolve-url-loader": "^3.0.0",
     "sass": "^1.70.0",
     "sass-loader": "^7.1.0",
@@ -66,6 +70,8 @@
     "require": [
       "@babel/register"
     ],
-    "files": ["modules/**/test.js"]
+    "files": [
+      "modules/**/test.js"
+    ]
   }
 }
