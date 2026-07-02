@@ -6,6 +6,10 @@ function Demo() {
   const editorRef = useRef(null);
   const [mode, setMode] = useState("author");
   const [output, setOutput] = useState("");
+  const [value, setValue] = useState();
+
+  const SAMPLE_TEMPLATE =
+    '<p>Consignee: <span class="template-field" data-field-id="f_saved1" data-field-type="text" data-label="Consignee" data-required="true" data-value=""></span></p>';
 
   const show = (label, data) =>
     setOutput(`${label}:\n${typeof data === "string" ? data : JSON.stringify(data, null, 2)}`);
@@ -38,8 +42,9 @@ function Demo() {
         <button onClick={() => show("Rendered HTML", editorRef.current?.getRenderedHTML())}>
           Get rendered HTML
         </button>
+        <button onClick={() => setValue(SAMPLE_TEMPLATE)}>Load sample template</button>
       </div>
-      <RichTextEditorWrapper ref={editorRef} mode={mode} height="300px" />
+      <RichTextEditorWrapper ref={editorRef} mode={mode} value={value} height="300px" />
       <pre
         style={{ background: "#f5f5f5", padding: 12, whiteSpace: "pre-wrap", marginTop: 12 }}
       >
