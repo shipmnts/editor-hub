@@ -7,7 +7,9 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
-    "watch": "webpack --watch --mode development"
+    "watch": "webpack --watch --mode development",
+    "demo": "webpack-dev-server --config webpack.demo.js --open",
+    "demo:build": "webpack --config webpack.demo.js"
   },
   "repository": {
     "type": "git",

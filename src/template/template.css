@@ -1,0 +1,141 @@
+/* Horizontal divider */
+.tpl-divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 12px 0;
+}
+
+/* Section block (in-editor preview). Layout/borders are inline on the table
+   so they match the rendered output and override Quill's table CSS. */
+.tpl-section {
+  margin: 8px 0;
+  font-size: 13px;
+}
+.tpl-section .tpl-var {
+  background: #e6f0ff;
+  border-radius: 3px;
+  padding: 0 4px;
+  color: #1a56db;
+}
+
+/* Layout block (in-editor preview). Borders are inline on the <td>s so they
+   match the rendered output; these styles are editor-only affordances. */
+.tpl-layout {
+  margin: 8px 0;
+  font-size: 13px;
+}
+.tpl-layout td[data-path] {
+  cursor: pointer;
+}
+.tpl-layout td[data-path]:hover {
+  outline: 1px dashed #4a90d9;
+  outline-offset: -1px;
+  background: rgba(74, 144, 217, 0.05);
+}
+.tpl-layout .tpl-var {
+  background: #e6f0ff;
+  border-radius: 3px;
+  padding: 0 4px;
+  color: #1a56db;
+}
+
+/* Insert toolbar */
+.tpl-insert-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.tpl-insert-bar button {
+  font-size: 13px;
+  padding: 4px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  background: #fafafa;
+  cursor: pointer;
+}
+.tpl-insert-bar button:hover {
+  background: #f0f0f0;
+}
+
+/* Section editor modal */
+.tpl-section-editor-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 9998;
+}
+.tpl-section-editor {
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 440px;
+  max-width: 90vw;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+}
+.tpl-section-editor h4 {
+  margin: 0 0 12px;
+}
+.tpl-section-editor label {
+  display: block;
+  font-size: 13px;
+  margin: 10px 0 4px;
+}
+.tpl-section-editor select {
+  padding: 4px;
+}
+.tpl-section-editor textarea {
+  width: 100%;
+  height: 130px;
+  font-family: monospace;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+.tpl-section-editor .tpl-hint {
+  font-size: 11px;
+  color: #888;
+  margin-top: 6px;
+}
+.tpl-section-editor .tpl-actions {
+  margin-top: 14px;
+  text-align: right;
+}
+.tpl-section-editor .tpl-actions button {
+  margin-left: 8px;
+  padding: 5px 14px;
+  cursor: pointer;
+}
+.tpl-section-editor input[type="text"],
+.tpl-section-editor input[type="number"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px 6px;
+  font-size: 13px;
+}
+.tpl-section-editor input[type="number"] {
+  width: 80px;
+  margin-left: 6px;
+}
+.tpl-section-editor .tpl-borders {
+  display: flex;
+  gap: 14px;
+}
+.tpl-section-editor .tpl-borders label {
+  margin: 4px 0;
+}
+.tpl-section-editor .tpl-structure {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+.tpl-section-editor .tpl-structure button {
+  font-size: 12px;
+  padding: 4px 10px;
+  cursor: pointer;
+}

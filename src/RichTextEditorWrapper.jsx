@@ -114,6 +114,7 @@ const RichTextEditorWrapper = forwardRef((props, ref) => {
         quillRef.current.querySelector(".ql-editor")?.focus();
       }
     },
+    getQuill: () => quill,
   }));
 
   if (Quill && !quill) {
