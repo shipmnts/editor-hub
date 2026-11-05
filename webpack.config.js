@@ -128,5 +128,8 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts"], // Resolve .js and .jsx extensions
+    // quill 2.0.0-dev.3's main is a webpack dev build with one eval() per module,
+    // which needs 'unsafe-eval' in the apps' CSP. Build Quill from its source instead.
+    alias: { quill$: path.resolve(__dirname, "node_modules/quill/quill.js") },
   },
 };
