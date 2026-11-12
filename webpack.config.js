@@ -20,6 +20,20 @@ module.exports = {
   module: {
     rules: [
       {
+        // Quill's source mixes `import` with `module.exports` here (its own build
+        // runs Babel). Webpack makes `exports` read-only in an ES module, so the
+        // bundle throws on load unless this file is compiled to CommonJS first.
+        test: path.resolve(__dirname, "node_modules/quill/ui/icons.js"),
+        use: {
+          loader: "babel-loader",
+          options: {
+            babelrc: false,
+            configFile: false,
+            presets: [["@babel/preset-env", { modules: "commonjs", targets: { esmodules: true } }]],
+          },
+        },
+      },
+      {
         test: /\.js$/, // Transpile JavaScript files
         exclude: /node_modules/,
         use: {
