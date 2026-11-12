@@ -85,7 +85,8 @@ export const useQuill = (
 
   useEffect(() => {
     if (!obj.Quill) {
-      setObj((prev) => assign(prev, { Quill: require("quill") }));
+      const quillModule = require("quill");
+      setObj((prev) => assign(prev, { Quill: quillModule.default || quillModule }));
     }
     if (obj.Quill && !obj.quill && quillRef && quillRef.current && isLoaded) {
       const opts = assign(options, {
